@@ -6,7 +6,7 @@ const { mainUrl } = require('../config/dbConfig');
 const adduser = async (req, res) => {
     try {
         const info = {
-            image: req.files.image[0]?mainUrl + req.files.image[0].filename:'',
+            image: req.files.image === undefined ? mainUrl + req.files.image[0].filename:'',
             invitationCode: req.body.invitationCode,
             userName: req.body.userName,
             phone: req.body.phone,
