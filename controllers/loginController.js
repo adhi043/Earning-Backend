@@ -1,8 +1,7 @@
 const User = require('../models/userModel');
 const { compareSync, hashSync } = require('bcrypt');
 const { sign } = require('jsonwebtoken');
-const dbConfig = require('../config/dbConfig.js');
-const noduserNameer = require('noduserNameer');
+const { KEY_NAME } = require('../config/dbConfig');
 
 
 const loginuser = async (req, res) => {
@@ -19,7 +18,7 @@ const loginuser = async (req, res) => {
             const isloginPasswordMatch = await User.findOne({ loginPassword: info.loginPassword });
             if (isloginPasswordMatch) {
                 // Generate JWT token for authentication
-                const token = sign({ id: userData._id, userName: userData.userName }, dbConfig.KEY_NAME, { expiresIn: '1h' });
+                const token = sign({ id: userData._id, userName: userData.userName }, KEY_NAME, { expiresIn: '1h' });
 
                 res.status(200).json({
                     status: 'ok',
