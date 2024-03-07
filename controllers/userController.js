@@ -9,6 +9,7 @@ const adduser = async (req, res) => {
             image: mainUrl + req.files.image[0].filename,
             invitationCode: req.body.invitationCode,
             userName: req.body.userName,
+            phone: req.body.phone,
             loginPassword: req.body.loginPassword,
             withdrawPassword: req.body.withdrawPassword,
             realName: req.body.realName,
