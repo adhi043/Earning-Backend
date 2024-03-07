@@ -15,8 +15,15 @@ const adduser = async (req, res) => {
             block: req.body.block,
         };
 
-        const user = await User.create(info);
-        return res.status(200).json({ status: 'ok', data: user });
+        const checkusername = await User.findOne({ userName: info.userName });
+
+        if(checkusername){
+            return res.status(500).json({ status: 'fail', message: 'Username already exist!' });
+        }
+        else{
+            const user = await User.create(info);
+            return res.status(200).json({ status: 'ok', data: user });
+        }
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
