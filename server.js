@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 
 
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb+srv://harbor_capital_club:W4oqJL5pmf5I7NIG@todo.vxypr2w.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb://127.0.0.1/earningapi')
   .then(() => console.log('Connection Successfull!'))
   .catch((err)=>console.log(err));
 
@@ -38,7 +38,7 @@ mongoose.connect('mongodb+srv://harbor_capital_club:W4oqJL5pmf5I7NIG@todo.vxypr2
 
 const connectMongoDB = async() => {
     try{
-        const conn = await mongoose.connect('mongodb+srv://harbor_capital_club:W4oqJL5pmf5I7NIG@todo.vxypr2w.mongodb.net/?retryWrites=true&w=majority')
+        const conn = await mongoose.connect('mongodb://127.0.0.1/earningapi')
         console.log("Successfully Connected")
     }catch(error){
         console.log('Error in connecting DataBase ${error}.bgRed.white')
