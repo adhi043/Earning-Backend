@@ -10,6 +10,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         allowNull: false,
     },
+    image: {
+        type: String,
+        allowNull: true,
+    },
+    phone: {
+        type: String,
+        allowNull: false,
+    },
     loginPassword: {
         type: String,
         allowNull: false,

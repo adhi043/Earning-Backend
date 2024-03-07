@@ -5,10 +5,10 @@ const { upload } = require('../upload/UploadFile')
 const router=require('express').Router()
 
 router.get('/get',userController.getusers)
-router.post('/create',userController.adduser)
+router.post('/create',upload.fields([{name:'image',maxCount:1}]),userController.adduser)
 
 router.get('/get/:id',userController.getuserById)
-router.put('/update/:id',userController.updateuser)
+router.put('/update/:id',upload.fields([{name:'image',maxCount:1}]),userController.updateuser)
 router.delete('/delete/:id',userController.deleteuser)
 
 

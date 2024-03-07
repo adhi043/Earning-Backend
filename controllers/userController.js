@@ -6,7 +6,7 @@ const { mainUrl } = require('../config/dbConfig');
 const adduser = async (req, res) => {
     try {
         const info = {
-            // image: mainUrl + req.files.image[0].filename,
+            image: mainUrl + req.files.image[0].filename,
             invitationCode: req.body.invitationCode,
             userName: req.body.userName,
             loginPassword: req.body.loginPassword,
@@ -54,12 +54,12 @@ const getuserById = async (req, res) => {
 const updateuser = async (req, res) => {
     try {
         let id = req.params.id;
-        // let getImage = await User.findById(id);
-        // const image = req.files.image === undefined ? getImage.image : mainUrl + req.files.image[0].filename;
+        let getImage = await User.findById(id);
+        const image = req.files.image === undefined ? getImage.image : mainUrl + req.files.image[0].filename;
 
 
         const updateduser = await User.findByIdAndUpdate(id, 
-            { ...req.body, }, 
+            { ...req.body, image: image, }, 
             { new: true });
         return res.status(200).json({ status: 'ok', data: updateduser });
     } catch (err) {
