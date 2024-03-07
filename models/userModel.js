@@ -4,22 +4,23 @@ const userSchema = new mongoose.Schema({
     invitationCode: {
         type: mongoose.Schema.Types.ObjectId,
         ref:'User',
+        allowNull: true,
     },
     userName: {
         type: String,
-        allowNull: true,
+        allowNull: false,
     },
     loginPassword: {
         type: String,
-        allowNull: true,
+        allowNull: false,
     },
     withdrawPassword: {
         type: String,
-        allowNull: true,
+        allowNull: false,
     },
     realName: {
         type: String,
-        allowNull: true,
+        allowNull: false,
     },
     block: {
         type: Boolean,
