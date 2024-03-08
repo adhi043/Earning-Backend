@@ -58,6 +58,7 @@ connectMongoDB()
 // routers
 const userRouter = require('./routes/userRoutes.js')
 const depositRouter = require('./routes/depositRoutes.js')
+const referralEarningRouter = require('./routes/referralEarningRoutes.js')
 const loginRouter = require('./routes/loginRoutes.js');
 const { url } = require('./config/dbConfig.js');
 
@@ -70,7 +71,9 @@ const { url } = require('./config/dbConfig.js');
 
 app.use('/apis/user',userRouter)
 app.use('/apis/deposit',depositRouter)
+app.use('/apis/referralEarning',referralEarningRouter)
 app.use('/apis/login',loginRouter)
+
 
 
 
