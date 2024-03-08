@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
     wallet: {
         type: Number,
         allowNull: true,
+        default:0
     },
     gender: {
         type: String,
