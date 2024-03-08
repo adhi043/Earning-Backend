@@ -7,6 +7,8 @@ const { mainUrl } = require('../config/dbConfig');
 // 1. Create deposit
 const adddeposit = async (req, res) => {
     try {
+
+        let verify=true
         const info = {
             image: req.files.image === undefined ? '' : mainUrl + req.files.image[0].filename,
             userId: req.body.userId,
@@ -19,7 +21,7 @@ const adddeposit = async (req, res) => {
 
         
 
-        if (info.verify === true) {
+        if (verify === true) {
 
             let userd = await User.findById(info?.userId);
 
