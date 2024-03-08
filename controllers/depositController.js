@@ -20,6 +20,9 @@ const adddeposit = async (req, res) => {
         // const checkdepositname = await Deposit.findOne({ depositName: info.depositName });
 
 
+        
+
+
         const deposit = await Deposit.create(info);
         return res.status(200).json({ status: 'ok', data: deposit });
 
@@ -81,6 +84,9 @@ const updateApprovedeposit = async (req, res) => {
         let getDepo = await Deposit.findById(id);
 
 
+
+
+
         if (verify === true) {
 
             let userd = await User.findById(getDepo?.userId);
@@ -88,7 +94,7 @@ const updateApprovedeposit = async (req, res) => {
             let walletDep = (getDepo?.amount * 12) / 100
 
             const updateddepositUser = await User.findByIdAndUpdate(getDepo?.userId,
-                { ...req.body, wallet: userd?.wallet+walletDep },
+                { ...req.body, wallet: userd?.wallet+walletDep,deposit:true },
                 { new: true });
 
 

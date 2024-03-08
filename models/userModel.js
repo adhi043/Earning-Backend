@@ -46,6 +46,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         allowNull: false,
     },
+    deposit: {
+        type: Boolean,
+        allowNull: true,
+    },
     block: {
         type: Boolean,
         allowNull: true,

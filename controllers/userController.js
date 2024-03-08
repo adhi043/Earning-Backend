@@ -12,6 +12,7 @@ const adduser = async (req, res) => {
             phone: req.body.phone,
             email: req.body.email,
             dob: req.body.dob,
+            deposit: req.body.deposit,
             gender: req.body.gender,
             loginPassword: req.body.loginPassword,
             withdrawPassword: req.body.withdrawPassword,
