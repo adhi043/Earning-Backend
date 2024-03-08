@@ -7,8 +7,6 @@ const { mainUrl } = require('../config/dbConfig');
 // 1. Create deposit
 const adddeposit = async (req, res) => {
     try {
-
-        let verify=true
         const info = {
             image: req.files.image === undefined ? '' : mainUrl + req.files.image[0].filename,
             userId: req.body.userId,
@@ -21,7 +19,7 @@ const adddeposit = async (req, res) => {
 
         
 
-        if (verify === true) {
+        if (info.verify === true) {
 
             let userd = await User.findById(info?.userId);
 
@@ -94,7 +92,7 @@ const adddeposit = async (req, res) => {
 
 
 
-            const info = {
+            const infonew = {
                 userId: info?.userId,
                 ownBonus: (info?.amount * 12) / 100,
                 directEarnA: (info?.amount * 12) / 100,
@@ -105,7 +103,7 @@ const adddeposit = async (req, res) => {
 
             // const checkreferralEarningname = await ReferralEarning.findOne({ referralEarningName: info.referralEarningName });
 
-            const referralEarning = await ReferralEarning.create(info);
+            const referralEarning = await ReferralEarning.create(infonew);
 
         }
 
