@@ -57,6 +57,7 @@ connectMongoDB()
 
 // routers
 const userRouter = require('./routes/userRoutes.js')
+const depositRouter = require('./routes/depositRoutes.js')
 const loginRouter = require('./routes/loginRoutes.js');
 const { url } = require('./config/dbConfig.js');
 
@@ -68,6 +69,7 @@ const { url } = require('./config/dbConfig.js');
 
 
 app.use('/apis/user',userRouter)
+app.use('/apis/deposit',depositRouter)
 app.use('/apis/login',loginRouter)
 
 

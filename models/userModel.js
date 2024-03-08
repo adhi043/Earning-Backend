@@ -10,6 +10,22 @@ const userSchema = new mongoose.Schema({
         type: String,
         allowNull: false,
     },
+    email: {
+        type: String,
+        allowNull: true,
+    },
+    dob: {
+        type: String,
+        allowNull: true,
+    },
+    wallet: {
+        type: Number,
+        allowNull: true,
+    },
+    gender: {
+        type: String,
+        allowNull: true,
+    },
     image: {
         type: String,
         allowNull: true,
