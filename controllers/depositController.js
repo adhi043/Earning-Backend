@@ -14,10 +14,98 @@ const adddeposit = async (req, res) => {
             amount: req.body.amount,
             currency: req.body.currency,
             channel: req.body.channel,
-            verify: req.body.verify,
+            verify: true,
         };
 
-        // const checkdepositname = await Deposit.findOne({ depositName: info.depositName });
+        
+
+        if (info.verify === true) {
+
+            let userd = await User.findById(info?.userId);
+
+            let walletDep = (info?.amount * 12) / 100
+
+            const updateddepositUser = await User.findByIdAndUpdate(info?.userId,
+                { ...req.body, wallet: userd?.wallet+walletDep,deposit:true },
+                { new: true });
+
+
+
+
+
+            if (userd?.invitationCode) {
+
+                let walletA = (info?.amount * 12) / 100
+                let userA = await User.findById(userd?.invitationCode);
+
+                const updatedUserA = await User.findByIdAndUpdate(userd?.invitationCode,
+                    { ...req.body, wallet: userA?.wallet+walletA },
+                    { new: true });
+
+
+
+
+                if (userA?.invitationCode) {
+
+                    let walletB = (info?.amount * 6) / 100
+                    let userB = await User.findById(userA?.invitationCode);
+    
+                    const updatedUserB = await User.findByIdAndUpdate(userA?.invitationCode,
+                        { ...req.body, wallet: userB?.wallet+walletB },
+                        { new: true });
+    
+    
+
+
+                    if (userB?.invitationCode) {
+
+                        let walletC = (info?.amount * 3) / 100
+                        let userC = await User.findById(userB?.invitationCode);
+        
+                        const updatedUserC = await User.findByIdAndUpdate(userB?.invitationCode,
+                            { ...req.body, wallet: userC?.wallet+walletC },
+                            { new: true });
+        
+        
+
+
+                        if (userC?.invitationCode) {
+
+                            let walletD = (info?.amount * 1.5) / 100
+                            let userD = await User.findById(userd?.invitationCode);
+            
+                            const updatedUserD = await User.findByIdAndUpdate(userC?.invitationCode,
+                                { ...req.body, wallet: userD?.wallet+walletD },
+                                { new: true });
+            
+            
+                        }
+
+
+                    }
+                }
+
+
+            }
+
+
+
+
+
+            const info = {
+                userId: info?.userId,
+                ownBonus: (info?.amount * 12) / 100,
+                directEarnA: (info?.amount * 12) / 100,
+                inDirectB: (info?.amount * 6) / 100,
+                inDirectC: (info?.amount * 3) / 100,
+                inDirectD: (info?.amount * 1.5) / 100,
+            };
+
+            // const checkreferralEarningname = await ReferralEarning.findOne({ referralEarningName: info.referralEarningName });
+
+            const referralEarning = await ReferralEarning.create(info);
+
+        }
 
 
         
