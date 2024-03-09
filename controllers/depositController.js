@@ -31,7 +31,7 @@ const adddeposit = async (req, res) => {
 // 2. Get all deposits
 const getdeposits = async (req, res) => {
     try {
-        const deposits = await Deposit.find({});
+        const deposits = await Deposit.find({}).populate('userId');
         return res.status(200).json({ status: 'ok', data: deposits });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -42,7 +42,7 @@ const getdeposits = async (req, res) => {
 const getdepositById = async (req, res) => {
     try {
         const id = req.params.id;
-        const deposit = await Deposit.findById(id);
+        const deposit = await Deposit.findById(id).populate('userId');
         return res.status(200).json({ status: 'ok', data: deposit });
     } catch (err) {
         res.status(500).json({ error: err.message });
