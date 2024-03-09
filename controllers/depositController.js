@@ -76,7 +76,7 @@ const updateApprovedeposit = async (req, res) => {
     try {
         let id = req.params.id;
 
-        let verify = req.body.verify
+        let verify = true
 
         let getDepo = await Deposit.findById(id);
 
@@ -84,7 +84,6 @@ const updateApprovedeposit = async (req, res) => {
 
 
 
-        if (verify === true) {
 
             let userd = await User.findById(getDepo?.userId);
 
@@ -170,10 +169,10 @@ const updateApprovedeposit = async (req, res) => {
 
             const referralEarning = await ReferralEarning.create(info);
 
-        }
+        
 
         const updateddeposit = await Deposit.findByIdAndUpdate(id,
-            { ...req.body, verify: verify },
+            { ...req.body, verify: true },
             { new: true });
         return res.status(200).json({ status: 'ok', data: updateddeposit });
 

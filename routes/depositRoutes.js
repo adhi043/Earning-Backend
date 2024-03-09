@@ -8,6 +8,7 @@ router.get('/get',depositController.getdeposits)
 router.post('/create',upload.fields([{name:'image',maxCount:1}]),depositController.adddeposit)
 
 router.get('/get/:id',depositController.getdepositById)
+router.get('/verify/:id',depositController.updateApprovedeposit)
 router.put('/update/:id',upload.fields([{name:'image',maxCount:1}]),depositController.updatedeposit)
 router.delete('/delete/:id',depositController.deletedeposit)
 
