@@ -97,7 +97,7 @@ const updateApprovedeposit = async (req, res) => {
 
 
 
-            if (userd?.invitationCode.length>0) {
+            if (userd?.invitationCode) {
 
                 let walletA = (getDepo?.amount * 12) / 100
                 let userA = await User.findOne({userName:userd?.invitationCode});
@@ -109,7 +109,7 @@ const updateApprovedeposit = async (req, res) => {
 
 
 
-                if (userA?.invitationCode.length>0) {
+                if (userA?.invitationCode) {
 
                     let walletB = (getDepo?.amount * 6) / 100
                     let userB = await User.findOne({userName:userA?.invitationCode});
